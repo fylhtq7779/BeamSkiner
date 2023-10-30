@@ -1,29 +1,14 @@
 <!doctype html>
 <html>
-
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-
-    <style>
-        body {
-            font-family: Roboto, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        model-viewer {
-            width: 100%;
-            height: 100vh;
-        }
-    </style>
-
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, initial-scale=1, user-scalable=yes">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-
 <body>
-    <model-viewer src="model.glb" ar
+    <canvas id="texture-canvas"></canvas>
+    <model-viewer id="model" src="R20.glb" ar
         rotation-per-second="30deg" auto-rotate camera-controls></model-viewer>
+    <script type="module" src="script.js"></script>
 </body>
-
 </html>
