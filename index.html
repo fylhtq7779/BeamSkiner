@@ -1,46 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <title>My first 3D Model Viewer</title>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
     <style>
-      body { margin: 0; }
-      canvas { display: block; }
+        body {
+            font-family: Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        model-viewer {
+            width: 100%;
+            height: 100vh;
+        }
     </style>
-  </head>
-  <body>
-    <script src="https://threejs.org/build/three.js"></script>
-    <script src="https://threejs.org/examples/jsm/loaders/GLTFLoader.js"></script>
-    <script>
-      let scene, camera, renderer, model;
 
-      init();
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+</head>
 
-      function init() {
-        scene = new THREE.Scene();
-        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = 5;
+<body>
+    <model-viewer src="model.glb" ar
+        rotation-per-second="30deg" auto-rotate camera-controls></model-viewer>
+</body>
 
-        let light = new THREE.AmbientLight(0x404040);
-        light.position.set(10, 10, 10);
-        scene.add(light);
-
-        renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-
-        document.body.appendChild(renderer.domElement);
-
-        let loader = new THREE.GLTFLoader();
-        loader.load('path/to/your/model.glb', function ( gltf ) {
-          model = gltf.scene;
-          scene.add(model);
-          animate();
-        });
-      }
-
-      function animate() {
-        requestAnimationFrame(animate);
-        renderer.render(scene, camera);
-      }
-    </script>
-  </body>
 </html>
